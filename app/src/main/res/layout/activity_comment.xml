@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Comment">
+    <!-- activity_comments.xml -->
+    <!-- activity_comments.xml -->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Tiêu đề màn hình -->
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh sách bình luận"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:padding="16dp" />
+
+        <!-- Scroll View để chứa danh sách bình luận -->
+        <ScrollView
+            android:contentDescription="Enter How Much Cookies You Want"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:id="@+id/commentsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <!-- Danh sách các bình luận sẽ được thêm vào đây -->
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Nút "Viết bình luận" -->
+        <Button
+            android:id="@+id/writeCommentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viết bình luận"
+            android:layout_gravity="center"
+            android:padding="16dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
