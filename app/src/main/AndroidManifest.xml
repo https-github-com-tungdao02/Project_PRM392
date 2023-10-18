@@ -18,6 +18,9 @@
         <activity
             android:name=".ReadingBook"
             android:exported="false" />
+      <activity
+            android:name=".ProfileScreen"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
