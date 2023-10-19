@@ -12,6 +12,6 @@
         android:text="Cart"
         android:textSize="50dp"
         android:gravity="center"
-        android:textColor="@color/lavender"/>
+        android:textColor="@color/bookaland"/>
 
 </FrameLayout>
