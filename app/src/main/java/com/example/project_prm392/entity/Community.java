@@ -7,17 +7,32 @@ import java.util.List;
 public class Community {
     private int id;
     private String description;
-    private Date date;
+    private String date;
 
     private int like;
 
+    public int userId;
+    public int book_id;
     public User user;
     public Book book;
 
     public Community() {
     }
 
-    public Community(int id, String description, Date date, int like, User user, Book book) {
+    public Community(int id, String description, String date, int like) {
+        this.id = id;
+        this.description = description;
+        this.date = date;
+        this.like = like;
+    }
+
+    public Community( String description, String date, int like) {
+        this.description = description;
+        this.date = date;
+        this.like = like;
+    }
+
+    public Community(int id, String description, String date, int like, User user, Book book) {
         this.id = id;
         this.description = description;
         this.date = date;
@@ -34,7 +49,7 @@ public class Community {
         return description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -58,7 +73,7 @@ public class Community {
         this.description = description;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
