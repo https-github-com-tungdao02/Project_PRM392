@@ -11,9 +11,9 @@
         android:title="Community"
         android:icon="@drawable/baseline_people_alt_24"/>
 
-    <item
-        android:title=""
-        android:enabled="true"/>
+<!--    <item-->
+<!--        android:title=""-->
+<!--        android:enabled="true"/>-->
 
     <item
         android:id="@+id/bottom_history"

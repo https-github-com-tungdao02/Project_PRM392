@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     FragmentManager fragmentManager;
     Toolbar toolbar;
-    FloatingActionButton fab;
+//    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
 
-        fab = findViewById(R.id.fab);
+//        fab = findViewById(R.id.fab);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     openFragment(new AccountFragment());
                     return true;
                 }
-
                 return false;
             }
         });
@@ -76,12 +75,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         openFragment(new HomeFragment());
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Upload", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "Upload", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
