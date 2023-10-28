@@ -3,6 +3,7 @@ package com.example.project_prm392;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +30,8 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
             descriptionTextView = itemView.findViewById(R.id.communityDescription);
             dateTextView = itemView.findViewById(R.id.communityDate);
             likeData = itemView.findViewById(R.id.likedata);
+            ImageView likebtn = itemView.findViewById(R.id.likeBtn);
+
         }
     }
 
@@ -42,11 +45,11 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
     @Override
     public void onBindViewHolder(@NonNull CommunityViewHolder holder, int position) {
         Community community = communityList.get(position);
-
         Random rand = new Random();
         holder.descriptionTextView.setText("Description: " + community.getDescription());
         holder.dateTextView.setText("Date: " + community.getDate());
-        holder.likeData.setText((rand.nextInt(80)+10)+"");
+        holder.likeData.setText(community.getLike()+"");
+        holder.likeData.setTag(community.firebaseId);
     }
 
     @Override

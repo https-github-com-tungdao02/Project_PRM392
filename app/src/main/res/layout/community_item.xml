@@ -43,14 +43,15 @@
             android:id="@+id/likeBtn"
             android:layout_width="41dp"
             android:layout_height="29dp"
-            android:src="@drawable/heart" />
+            android:src="@drawable/heart"
+            android:tag="123"/>
 
         <TextView
             android:id="@+id/likedata"
-            android:layout_width="wrap_content"
+            android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_below="@id/likeBtn"
-            android:paddingStart="12dp"
+            android:gravity="center"
             android:text="12" />
     </LinearLayout>
 </LinearLayout>

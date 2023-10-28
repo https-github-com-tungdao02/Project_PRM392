@@ -5,6 +5,7 @@ import static java.util.UUID.randomUUID;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
@@ -12,6 +13,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import java.text.SimpleDateFormat;
@@ -19,6 +21,7 @@ import java.util.Date;
 import com.example.project_prm392.entity.Community;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -83,38 +86,42 @@ public class CommunityFragment extends Fragment {
         }
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Communities");
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_community, container, false);
         final RecyclerView recyclerView = view.findViewById(R.id.communityRecyclerView);
-        newCommunityText = view.findViewById(R.id.newCommunityText);
-        addCommunityButton = view.findViewById(R.id.addCommunityButton);
-
         final CommunityAdapter adapter = new CommunityAdapter(communityList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         // Attach ValueEventListener to fetch and display data
-        addCommunityButton.setOnClickListener(new View.OnClickListener() {
+        databaseReference.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onClick(View v) {
-                // Lấy nội dung mới của community từ EditText
-                String newCommunityContent = newCommunityText.getText().toString();
-                Community community = new Community(newCommunityContent,"2/2/2022",20);
-                community.book_id = 2;
-                databaseReference.child(UUID.randomUUID().toString()).setValue(community).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        communityList.add(community);
-                        adapter.notifyDataSetChanged();
-                    }
-                });
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                newCommunityText.setText("");
+            }
 
-                adapter.notifyDataSetChanged();
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -122,13 +129,19 @@ public class CommunityFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
                     if(childSnapshot.child("book_id").getValue(Integer.class) == 2 ){
+
                         String description = childSnapshot.child("description").getValue(String.class);
                         String date = childSnapshot.child("date").getValue(String.class);
                         int like = childSnapshot.child("like").getValue(Integer.class);
-                        int id = childSnapshot.child("id").getValue(Integer.class);
+                        Date dateTimed =null;
+                        try {
+                            dateTimed = sdf.parse(date);
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
+                        }
 
-
-                        Community community = new Community(id,description, date, like);
+                        Community community = new Community(description, dateTimed, like);
+                        community.firebaseId = UUID.fromString(childSnapshot.getKey());
                         communityList.add(community);
                     }
                 }
