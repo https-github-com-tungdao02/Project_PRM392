@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class Community {
+public class Community
+//user_book_mn
+ {
     public UUID firebaseId;
     private String description;
     private Date date;
