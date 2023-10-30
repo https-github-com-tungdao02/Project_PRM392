@@ -6,18 +6,28 @@ public class History {
     private int id;
     private int page;
     private Date time;
-    public Book book;
-    public User user;
+    private Book book;
+    private User user;
 
+    private Page number_page;
     public History() {
     }
 
-    public History(int id, int page, Date time, Book book, User user) {
+    public History(int id, int page, Date time, Book book, User user, Page number_page) {
         this.id = id;
         this.page = page;
         this.time = time;
         this.book = book;
         this.user = user;
+        this.number_page = number_page;
+    }
+
+    public Page getNumber_page() {
+        return number_page;
+    }
+
+    public void setNumber_page(Page number_page) {
+        this.number_page = number_page;
     }
 
     public int getId() {
