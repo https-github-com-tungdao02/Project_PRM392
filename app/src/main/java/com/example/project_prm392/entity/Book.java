@@ -1,6 +1,7 @@
 package com.example.project_prm392.entity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Book {
     private int id;
@@ -11,15 +12,11 @@ public class Book {
     private String image;
     private int views;
 
-    public ArrayList<Community> communities;
-    public ArrayList<History> histories;
-    public ArrayList<Page> pages;
-    public ArrayList<Tag> tags;
 
     public Book() {
     }
 
-    public Book(int id, String name, String description, String author, int like, String image, int views, ArrayList<Community> communities, ArrayList<History> histories, ArrayList<Page> pages, ArrayList<Tag> tags) {
+    public Book(int id, String name, String description, String author, int like, String image, int views) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -27,10 +24,6 @@ public class Book {
         this.like = like;
         this.image = image;
         this.views = views;
-        this.communities = communities;
-        this.histories = histories;
-        this.pages = pages;
-        this.tags = tags;
     }
 
     public int getId() {
@@ -89,35 +82,5 @@ public class Book {
         this.views = views;
     }
 
-    public ArrayList<Community> getCommunities() {
-        return communities;
-    }
 
-    public void setCommunities(ArrayList<Community> communities) {
-        this.communities = communities;
-    }
-
-    public ArrayList<History> getHistories() {
-        return histories;
-    }
-
-    public void setHistories(ArrayList<History> histories) {
-        this.histories = histories;
-    }
-
-    public ArrayList<Page> getPages() {
-        return pages;
-    }
-
-    public void setPages(ArrayList<Page> pages) {
-        this.pages = pages;
-    }
-
-    public ArrayList<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(ArrayList<Tag> tags) {
-        this.tags = tags;
-    }
 }

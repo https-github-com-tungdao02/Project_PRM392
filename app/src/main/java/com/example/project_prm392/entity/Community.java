@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Community implements Comparable<Community>{
+
     public UUID firebaseId;
     private String description;
     private Date date;
