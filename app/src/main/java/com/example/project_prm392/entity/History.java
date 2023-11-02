@@ -4,18 +4,15 @@ import java.util.Date;
 
 public class History {
     private int id;
-    private int page;
     private Date time;
     private Book book;
     private User user;
-
     private Page number_page;
     public History() {
     }
 
-    public History(int id, int page, Date time, Book book, User user, Page number_page) {
+    public History(int id,  Date time, Book book, User user, Page number_page) {
         this.id = id;
-        this.page = page;
         this.time = time;
         this.book = book;
         this.user = user;
@@ -38,13 +35,7 @@ public class History {
         this.id = id;
     }
 
-    public int getPage() {
-        return page;
-    }
 
-    public void setPage(int page) {
-        this.page = page;
-    }
 
     public Date getTime() {
         return time;
