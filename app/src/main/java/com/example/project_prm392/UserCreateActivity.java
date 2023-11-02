@@ -77,7 +77,7 @@ public class UserCreateActivity extends AppCompatActivity {
                     int role = (int) spinnerRole.getSelectedItemId();
                     String gender = spinnerGender.getSelectedItem().toString();
 
-                    database.child("user").push().setValue(new User(id, user,password,role,phone,address,image,gender, email)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    database.child("users").push().setValue(new User(id, user,password,role,phone,address,image,gender, email)).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             Toast.makeText(UserCreateActivity.this, "Data success", Toast.LENGTH_SHORT);
