@@ -132,8 +132,8 @@ public class  HistoryFragment extends Fragment {
                         textView.setText("Select an option");
                         textView.setPadding(20, 30, 20, 30);
                         textView.setTextSize(20F);
-                        textView.setBackgroundColor(Color.CYAN);
-                        textView.setTextColor(Color.WHITE);
+                        textView.setBackgroundColor(getResources().getColor(R.color.bookaland700));
+                        textView.setTextColor(Color.BLACK);
                         alertDialogBuilder.setCustomTitle(textView);
                         alertDialogBuilder.setPositiveButton("Yes",
                                 new DialogInterface.OnClickListener() {
