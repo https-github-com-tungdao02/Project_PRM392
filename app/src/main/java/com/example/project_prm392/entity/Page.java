@@ -3,15 +3,25 @@ package com.example.project_prm392.entity;
 public class Page {
     private int id;
     private String content;
-    public Book book;
+    private Book book;
+    private int number;
 
     public Page() {
     }
 
-    public Page(int id, String content, Book book) {
+    public Page(int id, String content, Book book, int number) {
         this.id = id;
         this.content = content;
         this.book = book;
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getId() {
