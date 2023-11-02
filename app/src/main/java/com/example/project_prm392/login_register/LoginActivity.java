@@ -171,6 +171,11 @@ public class LoginActivity extends AppCompatActivity {
                     String password = snapshot.child("password").getValue(String.class);
                     // Username already exists
                     if(userPassword.equals(password)){
+                        SharedPreferences perferences = getSharedPreferences("account", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = perferences.edit();
+                        editor.putString("username",userName.getText().toString());
+                        editor.putString("password",passWord.getText().toString());
+                        editor.commit();
                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(i);
                     }
