@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginBottom="14dp"
+    app:cardBackgroundColor="@color/bookaland700"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        tools:ignore="MissingConstraints">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerVertical="true"
+            android:id="@+id/imagee"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:id="@+id/nametext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/imagee"
+            android:text="Name"
+            android:textColor="#000"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addresstext"
+            android:text="Address"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/imagee"
+            android:layout_below="@id/nametext"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/phonetext"
+            android:text="Phone"
+            android:textSize="20sp"
+            android:textColor="#000"
+            android:layout_toRightOf="@id/imagee"
+            android:layout_below="@id/addresstext"
+            android:layout_marginLeft="15dp"/>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Details"
+            android:backgroundTint="#FBE4BF"
+            android:textColor="@color/black"
+            android:layout_below="@id/phonetext"
+            android:layout_toRightOf="@id/imagee"
+            android:layout_marginLeft="150dp"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

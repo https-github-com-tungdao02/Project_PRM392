@@ -3,7 +3,7 @@ package com.example.project_prm392.entity;
 import java.util.ArrayList;
 
 public class User {
-    private int id;
+    private String id;
     private String user;
     private  String password;
     private int role;
@@ -12,12 +12,13 @@ public class User {
     private String image;
     private String gender;
 
+    private  String email;
 
 
     public User() {
     }
 
-    public User(int id, String user, String password, int role, String phone, String address, String image, String gender, ArrayList<User> users, ArrayList<Book> books) {
+    public User(String id, String user, String password, int role, String phone, String address, String image, String gender, String email) {
         this.id = id;
         this.user = user;
         this.password = password;
@@ -26,13 +27,14 @@ public class User {
         this.address = address;
         this.image = image;
         this.gender = gender;
+        this.email = email;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -92,4 +94,11 @@ public class User {
         this.gender = gender;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
