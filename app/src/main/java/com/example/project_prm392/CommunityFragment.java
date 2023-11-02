@@ -128,7 +128,7 @@ public class CommunityFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    if(childSnapshot.child("book_id").getValue(Integer.class) == 2 ){
+                    if(childSnapshot.child("book_id").getValue(Integer.class) == 1 ){
 
                         String description = childSnapshot.child("description").getValue(String.class);
                         String date = childSnapshot.child("date").getValue(String.class);
