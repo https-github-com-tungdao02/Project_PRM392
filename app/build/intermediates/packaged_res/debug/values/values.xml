@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="genders_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="roles_array">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
     <color name="black">#FF000000</color>
     <color name="bookaland">#fff0d9</color>
     <color name="bookaland700">#FABA59</color>

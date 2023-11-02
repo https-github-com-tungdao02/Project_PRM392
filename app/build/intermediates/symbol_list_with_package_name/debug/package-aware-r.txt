@@ -77,6 +77,8 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array genders_array
+array roles_array
 attr SharedValue
 attr SharedValueId
 attr actionBarDivider
@@ -295,6 +297,10 @@ attr circularflow_defaultAngle
 attr circularflow_defaultRadius
 attr circularflow_radiusInDP
 attr circularflow_viewCenter
+attr civ_border_color
+attr civ_border_overlay
+attr civ_border_width
+attr civ_circle_background_color
 attr clearsTag
 attr clickAction
 attr clockFaceBackgroundColor
@@ -2977,6 +2983,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable chat
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -3166,6 +3173,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addresstext
 id adjust_height
 id adjust_width
 id alertTitle
@@ -3201,10 +3209,14 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id btn_add
 id btn_delete_history
 id btn_history_fragment_delete
+id button
 id button2
 id button3
+id buttonAdd
+id buttonCancel
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3230,6 +3242,8 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id commentButton
+id commentEditText
 id communityDate
 id communityDescription
 id communityImage
@@ -3332,11 +3346,18 @@ id horizontal_only
 id icon
 id icon_group
 id icon_only
+id idAddress
+id idEmail
+id idImage
+id idPassword
+id idPhone
+id idUserName
 id ifRoom
 id ignore
 id ignoreRequest
 id image
 id imageView
+id imagee
 id immediateStop
 id imv_img_book
 id included
@@ -3421,6 +3442,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nametext
 id nav_account
 id nav_cart
 id nav_logout
@@ -3465,6 +3487,7 @@ id outline
 id outward
 id overshoot
 id packed
+id pageContentTextView
 id parallax
 id parent
 id parentPanel
@@ -3475,6 +3498,7 @@ id path
 id pathRelative
 id peekHeight
 id percent
+id phonetext
 id pin
 id position
 id postLayout
@@ -3484,6 +3508,7 @@ id progress_horizontal
 id ra
 id radio
 id ratio
+id rc_user
 id rcv_history
 id rectangles
 id report_drawn
@@ -3494,6 +3519,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id saveButton
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3534,6 +3560,8 @@ id snapMargins
 id south
 id spacer
 id special_effects_controller_view_tag
+id spinnerGender
+id spinnerRole
 id spline
 id split_action_bar
 id spread
@@ -3572,6 +3600,8 @@ id tag_window_insets_animation_callback
 id text
 id text2
 id textEnd
+id textGender
+id textRole
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
@@ -3614,6 +3644,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id userCard
 id vertical_only
 id view_offset_helper
 id view_transition
@@ -3749,7 +3780,9 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
+layout activity_main_admin
 layout activity_profile_screen
+layout activity_user_create
 layout community_item
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3769,9 +3802,11 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_account
 layout fragment_cart
+layout fragment_comment
 layout fragment_community
 layout fragment_history
 layout fragment_home
+layout fragment_read_page
 layout fragment_shopping
 layout history_item
 layout m3_alert_dialog
@@ -3779,6 +3814,7 @@ layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
 layout m3_auto_complete_simple_item
 layout m3_side_sheet_dialog
+layout main_item_account
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -5179,6 +5215,7 @@ styleable Carousel carousel_backwardTransition carousel_emptyViewsBehavior carou
 styleable CheckedTextView android_checkMark checkMarkCompat checkMarkTint checkMarkTintMode
 styleable Chip android_textAppearance android_textSize android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconTint checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical selectionRequired singleLine singleSelection
+styleable CircleImageView civ_border_color civ_border_overlay civ_border_width civ_circle_background_color
 styleable CircularProgressIndicator indicatorDirectionCircular indicatorInset indicatorSize
 styleable ClockFaceView clockFaceBackgroundColor clockNumberTextColor
 styleable ClockHandView clockHandColor materialCircleRadius selectorSize

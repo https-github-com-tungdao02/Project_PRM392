@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.project_prm392.app-mergeDebugResources-34:/values-it/values-it.xml",
+            "outputFile": "com.example.project_prm392.app-mergeDebugResources-35:/values-it/values-it.xml",
             "map": [
                 {
                     "source": "C:\\Users\\anhoa\\.gradle\\caches\\transforms-3\\8d6e805fb3c6c5bd0b1b27e104483289\\transformed\\material-1.10.0\\res\\values-it\\values-it.xml",
