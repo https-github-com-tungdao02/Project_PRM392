@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingBottom="10dp"
     tools:context=".HistoryFragment">
 
     <CheckBox
         android:id="@+id/cb_history_fragment_select_all"
-        android:layout_width="98dp"
-        android:layout_height="55dp"
+        android:layout_width="152dp"
+        android:layout_height="53dp"
         android:layout_marginStart="16dp"
-        android:text="CheckBox"
+        android:text="Selected All"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rcv_history" />
 
@@ -29,13 +29,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_history"
-        android:layout_width="409dp"
-        android:layout_height="491dp"
+        android:layout_width="406dp"
+        android:layout_height="550dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="1dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

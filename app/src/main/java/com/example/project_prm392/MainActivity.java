@@ -10,12 +10,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.project_prm392.login_register.Home_Login;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -27,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     FragmentManager fragmentManager;
     Toolbar toolbar;
+    GoogleSignInClient gsc;
 //    FloatingActionButton fab;
 
     @Override
@@ -81,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                Toast.makeText(MainActivity.this, "Upload", Toast.LENGTH_SHORT).show();
 //            }
 //        });
+
+        // Khởi tạo GoogleSignInClient
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        gsc = GoogleSignIn.getClient(this, gso);
     }
 
     @Override
@@ -92,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             openFragment(new CartFragment());
         }else if (itemId == R.id.nav_account){
             openFragment(new AccountFragment());
+        }else if (itemId == R.id.nav_logout) {
+            signOut();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -111,5 +126,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
+    }
+
+    void signOut() {
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove("username");
+        editor.remove("password");
+        editor.putBoolean("is_saved",false);
+        editor.commit();
+
+        // Sign out khỏi Google
+        gsc.signOut().addOnCompleteListener(this, task -> {
+            // Xử lý sau khi sign out thành công
+            startActivity(new Intent(MainActivity.this, Home_Login.class));
+            finish();
+        });
     }
 }

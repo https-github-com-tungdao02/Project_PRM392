@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bookaland">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp">
+
+        <ImageView
+            android:layout_width="255dp"
+            android:layout_height="255dp"
+            android:src="@drawable/bookkaland"></ImageView>
+        <EditText
+            android:id="@+id/R_UserName"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Tên đăng nhập"
+            android:textSize="20dp"
+            android:ems="15"
+            android:layout_marginTop="10dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/R_PassWord"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Mật khẩu"
+            android:textSize="20dp"
+            android:ems="15"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp">
+        </EditText>
+
+        <EditText
+            android:id="@+id/R_ConfirmPassWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="15"
+            android:hint="Nhập lại mật khẩu"
+            android:inputType="textPassword"
+            android:textColor="#000"
+            android:textSize="20dp"></EditText>
+
+        <EditText
+            android:id="@+id/R_Email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="15"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/R_Phone"
+            android:textColor="#000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:textSize="20dp"
+            android:ems="15"
+            android:inputType="phone"
+            android:layout_marginTop="20dp">
+        </EditText>
+
+        <Button
+            android:id="@+id/R_Register"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký"
+            android:layout_marginTop="30dp">
+        </Button>
+
+    </LinearLayout>
+</RelativeLayout>
