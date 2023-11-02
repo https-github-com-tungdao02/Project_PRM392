@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="126dp">
+
+        <ImageView
+            android:id="@+id/imv_img_book"
+            android:layout_width="78dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cb_id_history"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_circle_24" />
+
+        <CheckBox
+            android:id="@+id/cb_id_history"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_book_name_history"
+            android:layout_width="91dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toEndOf="@+id/imv_img_book"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_book_page_history"
+            android:layout_width="91dp"
+            android:layout_height="29dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.082"
+            app:layout_constraintStart_toEndOf="@+id/imv_img_book"
+            app:layout_constraintTop_toBottomOf="@+id/tv_book_name_history" />
+
+        <TextView
+            android:id="@+id/tv_book_date_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.069"
+            app:layout_constraintStart_toEndOf="@+id/imv_img_book"
+            app:layout_constraintTop_toBottomOf="@+id/tv_book_page_history" />
+
+        <Button
+            android:id="@+id/btn_delete_history"
+            android:layout_width="92dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="16dp"
+            android:text="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
