@@ -2,20 +2,28 @@ package com.example.project_prm392;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.User;
@@ -229,6 +237,48 @@ public class AccountFragment extends Fragment {
                 else{
 
                 }
+            }
+        });
+        btn_change_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Dialog dialog= new Dialog(v.getContext());
+                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialog.setContentView(R.layout.change_password_dialog);
+                Window window= dialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                dialog.setCancelable(false);
+                EditText edt_current_password= dialog.findViewById(R.id.edt_current_password);
+                EditText edt_new_password= dialog.findViewById(R.id.edt_new_password);
+                EditText edt_confirm_password= dialog.findViewById(R.id.edt_confirm_password);
+
+                Button btnCancel_pass=dialog.findViewById(R.id.btnCancel_pass);
+                Button btnReset_pass=dialog.findViewById(R.id.btnReset_pass);
+
+                btnCancel_pass.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                btnReset_pass.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String pass=shared_pref.getString("password","");
+                        if(edt_current_password.getText().toString().equals(pass)&& edt_new_password.getText().toString().equals(edt_confirm_password.getText().toString())){
+
+                            reference.child(username).child("password").setValue(edt_new_password.getText().toString());
+                            editor.putString("password",edt_new_password.getText().toString());
+                            editor.commit();
+                            Toast.makeText(getActivity(),"Change password successfull",Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }else {
+                            Toast.makeText(getActivity(),"Check password again",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                dialog.show();
             }
         });
         // Inflate the layout for this fragment
