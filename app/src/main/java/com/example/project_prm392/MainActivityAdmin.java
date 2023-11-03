@@ -54,6 +54,7 @@ public class MainActivityAdmin extends AppCompatActivity {
 
     ArrayList<User> userList;
     RecyclerView rc_user;
+    String searchName = "";
 
     private SearchView searchView;
 
@@ -73,8 +74,9 @@ public class MainActivityAdmin extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                fileList(newText);
-                return true;
+                searchName = newText;
+                userData();
+                return false;
             }
         });
 
@@ -114,9 +116,13 @@ public class MainActivityAdmin extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 userList = new ArrayList<>();
                 for(DataSnapshot item : snapshot.getChildren()){
+
                     User user = item.getValue(User.class);
                     user.setId(item.getKey());
-                    userList.add(user);
+                    if(searchName.trim().isEmpty()
+                        || user.getUser().toLowerCase().contains(searchName.trim().toLowerCase())){
+                        userList.add(user);
+                    }
                 }
                 adminAdapter = new AdminAdapter(userList, MainActivityAdmin.this);
                 rc_user.setAdapter(new AdminAdapter(userList, new AdminAdapter.OnClickDetails() {
