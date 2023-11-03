@@ -246,12 +246,12 @@ public class AccountFragment extends Fragment {
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
                 window.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 dialog.setCancelable(false);
-                EditText edt_current_password= dialog.findViewById(R.id.emailBox);
-                EditText edt_new_password= dialog.findViewById(R.id.userNameBox);
+                EditText edt_current_password= dialog.findViewById(R.id.edt_current_password);
+                EditText edt_new_password= dialog.findViewById(R.id.edt_new_password);
                 EditText edt_confirm_password= dialog.findViewById(R.id.edt_confirm_password);
 
-                Button btnCancel_pass=dialog.findViewById(R.id.btnCancel);
-                Button btnReset_pass=dialog.findViewById(R.id.btnReset);
+                Button btnCancel_pass=dialog.findViewById(R.id.btnCancel_pass);
+                Button btnReset_pass=dialog.findViewById(R.id.btnReset_pass);
 
                 btnCancel_pass.setOnClickListener(new View.OnClickListener() {
                     @Override
