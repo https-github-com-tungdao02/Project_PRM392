@@ -1,6 +1,8 @@
 package com.example.project_prm392;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,8 +19,14 @@ import android.view.View;
 
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +38,12 @@ import androidx.appcompat.widget.SearchView;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
@@ -87,6 +101,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             }
         }
         if(filteredList.isEmpty()){
+            adminAdapter.setFilteredList(filteredList);
             Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show();
         }else {
             adminAdapter.setFilteredList(filteredList);
@@ -125,8 +140,140 @@ public class MainActivityAdmin extends AppCompatActivity {
         dialog.setContentView(R.layout.user_details_dialog);
         Window window= dialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-        window.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         dialog.setCancelable(false);
+
+        TextView username = dialog.findViewById(R.id.tv_user_details);
+        username.setText(user.getUser());
+        EditText address = dialog.findViewById(R.id.edt_address_details);
+        if (user.getAddress() == null) {
+            address.setHint("none");
+        } else {
+            address.setText(user.getAddress());
+        }
+        EditText phone = dialog.findViewById(R.id.edt_phone_details);
+        if (user.getPhone() == null) {
+            phone.setHint("none");
+        } else {
+            phone.setText(user.getPhone());
+        }
+        EditText email = dialog.findViewById(R.id.edt_gmail_details);
+        if (user.getEmail() == null) {
+            email.setHint("none");
+        } else {
+            email.setText(user.getEmail());
+        }
+        if (user.getEmail() == null) {
+            email.setHint("none");
+        } else {
+            email.setText(user.getEmail());
+        }
+        CircleImageView image = dialog.findViewById(R.id.imageDetails);
+        EditText imageUrl = dialog.findViewById(R.id.edt_imageurl_details);
+        if (user.getImage() == null || user.getImage().isEmpty()) {
+            imageUrl.setHint("none");
+            Glide.with(this).load("https://png.pngtree.com/element_our/20200610/ourlarge/pngtree-default-avatar-image_2237213.jpg").into(image);
+        } else {
+            imageUrl.setText(user.getImage());
+            Glide.with(this).load(user.getImage()).into(image);
+        }
+
+        Spinner spinnerRole = dialog.findViewById(R.id.sp_role_details);
+        Spinner spinnerGender = dialog.findViewById(R.id.sp_gender_details);
+
+        int userRoleInt = user.getRole();
+        String userRole = String.valueOf(userRoleInt);
+        String userGender = user.getGender();
+
+        String[] gendersArray = getResources().getStringArray(R.array.genders_array);
+
+        String[] rolesArray = getResources().getStringArray(R.array.roles_array);
+        if (userRoleInt >= 1 && userRoleInt <= rolesArray.length) {
+            userRole = rolesArray[userRoleInt - 1];
+        }
+
+        ArrayAdapter<String> roleAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, rolesArray);
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, gendersArray);
+
+        spinnerRole.setAdapter(roleAdapter);
+        spinnerGender.setAdapter(genderAdapter);
+
+        if (userRole != null) {
+            int rolePosition = roleAdapter.getPosition(userRole);
+            if (rolePosition >= 0) {
+                spinnerRole.setSelection(rolePosition);
+            }
+        }
+
+        if (userGender != null) {
+            int genderPosition = genderAdapter.getPosition(userGender);
+            if (genderPosition >= 0) {
+                spinnerGender.setSelection(genderPosition);
+            }
+        }
+
+        Button btn_update_details = dialog.findViewById(R.id.btn_update_details);
+        btn_update_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String, Object> updateData = new HashMap<>();
+                user.setAddress(address.getText().toString());
+                user.setEmail(email.getText().toString());
+                user.setPhone(phone.getText().toString());
+                user.setImage(imageUrl.getText().toString());
+                user.setGender(spinnerGender.getSelectedItem().toString());
+                user.setRole((int) spinnerRole.getSelectedItemId());
+
+                updateData.put("address", user.getAddress());
+                updateData.put("email", user.getEmail());
+                updateData.put("gender", user.getGender());
+                updateData.put("phone", user.getPhone());
+                updateData.put("role", user.getRole());
+                updateData.put("image", user.getImage());
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("users");
+                db.child(user.getUser()+"").updateChildren(updateData, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        Toast.makeText(MainActivityAdmin.this,"Update successfull",Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+        Button btn_deleted_details = dialog.findViewById(R.id.btn_delete_details);
+        btn_deleted_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("users");
+                new AlertDialog.Builder(v.getContext())
+                        .setTitle("Delete Confirm")
+                        .setMessage("Do you want to delete")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                db.child(user.getUser()+"").removeValue(new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                        Toast.makeText(MainActivityAdmin.this,"Delete successfull",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                dialog.dismiss();
+                            }
+                        })
+                        .setNegativeButton("Cancel",null)
+                        .show();
+            }
+        });
+
+        Button btn_cancel_details = dialog.findViewById(R.id.btn_cancel_details);
+        btn_cancel_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         dialog.show();
+
     }
 }
