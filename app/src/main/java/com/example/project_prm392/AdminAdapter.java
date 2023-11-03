@@ -63,7 +63,11 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminHolder>
         holder.tv_name.setText("Name: " + data.getUser());
         holder.tv_address.setText("Address: " + data.getAddress());
         holder.tv_phone.setText("Phone: " + data.getPhone());
-        Glide.with(holder.itemView).load(userList.get(position).getImage()).into(holder.imageViewUser);
+        if(data.getImage() == null || data.getImage().isEmpty()){
+            Glide.with(holder.itemView).load("https://png.pngtree.com/element_our/20200610/ourlarge/pngtree-default-avatar-image_2237213.jpg").into(holder.imageViewUser);
+        }else{
+            Glide.with(holder.itemView).load(userList.get(position).getImage()).into(holder.imageViewUser);
+        }
         holder.btn_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
