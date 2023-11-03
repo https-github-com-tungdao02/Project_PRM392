@@ -3,37 +3,37 @@ package com.example.project_prm392.entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
-public class Community {
-    private int id;
+public class Community implements Comparable<Community>{
+
+    public UUID firebaseId;
     private String description;
-    private String date;
+    private Date date;
 
     private int like;
 
-    public int userId;
+    public int user_id;
     public int book_id;
     public User user;
     public Book book;
 
     public Community() {
     }
-
-    public Community(int id, String description, String date, int like) {
-        this.id = id;
+    public Community( String description, Date date, int like) {
         this.description = description;
         this.date = date;
         this.like = like;
     }
 
-    public Community( String description, String date, int like) {
+    public Community( String description, int like,int user_id,int book_id) {
         this.description = description;
-        this.date = date;
         this.like = like;
+        this.user_id = user_id;
+        this.book_id = book_id;
     }
 
-    public Community(int id, String description, String date, int like, User user, Book book) {
-        this.id = id;
+    public Community(String description, Date date, int like, User user, Book book) {
         this.description = description;
         this.date = date;
         this.like = like;
@@ -41,15 +41,12 @@ public class Community {
         this.book = book;
     }
 
-    public int getId() {
-        return id;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
@@ -65,15 +62,11 @@ public class Community {
         return book;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -87,5 +80,10 @@ public class Community {
 
     public void setBook(Book book) {
         this.book = book;
+    }
+
+    @Override
+    public int compareTo(Community community) {
+        return community.getLike() - this.getLike();
     }
 }

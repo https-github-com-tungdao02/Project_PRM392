@@ -1,18 +1,18 @@
 package com.example.project_prm392.entity;
 
+import java.util.List;
+
 public class Tag {
-    private String name;
+
     private int id;
-    public Book book;
+    private String name;
+    private List<Book> books;
 
-    public Tag() {
-    }
-
-    public Tag(String name, int id, Book book) {
+    public Tag(String name, List<Book> books) {
         this.name = name;
-        this.id = id;
-        this.book = book;
+        this.books = books;
     }
+
 
     public String getName() {
         return name;
@@ -22,19 +22,11 @@ public class Tag {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public List<Book> getBooks() {
+        return books;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Book getBook() {
-        return book;
-    }
-
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 }

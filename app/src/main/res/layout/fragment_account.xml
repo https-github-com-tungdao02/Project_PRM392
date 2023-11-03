@@ -1,17 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialog_account"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AccountFragment">
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardCornerRadius="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/_imv_account"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="58dp"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Account"
-        android:textSize="50dp"
-        android:gravity="center"
-        android:textColor="@color/bookaland"/>
+        android:id="@+id/_tv_user_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="User Name"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_imv_account" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_email_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Email:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/_edt_email_account"
+        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_tv_user_account" />
+
+    <EditText
+        android:id="@+id/_edt_email_account"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="48dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_tv_user_account" />
+
+    <TextView
+        android:id="@+id/_tv_phone_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="Phone:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/_edt_phone_account"
+        app:layout_constraintHorizontal_bias="0.818"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_email_account" />
+
+    <EditText
+        android:id="@+id/_edt_phone_account"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="48dp"
+
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_email_account" />
+
+    <TextView
+        android:id="@+id/_tv_img_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="ImageURL:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/_edt_img_account"
+        app:layout_constraintHorizontal_bias="0.702"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_phone_account" />
+
+    <EditText
+        android:id="@+id/_edt_img_account"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="48dp"
+
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_phone_account" />
+
+
+    <EditText
+        android:id="@+id/_edt_gender_account"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+
+        android:layout_marginEnd="48dp"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+    <EditText
+        android:id="@+id/_edt_gender_account2"
+        android:layout_width="225dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="25dp"
+
+        android:layout_marginEnd="48dp"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:singleLine="true"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+    <TextView
+        android:id="@+id/_tv_gender_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:text="Gender:"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/_edt_gender_account"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+    <LinearLayout
+        android:layout_width="378dp"
+        android:layout_height="147dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_gender_account">
+
+
+        <Button
+            android:id="@+id/btn_update_account"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:backgroundTint="@color/bookaland700"
+            android:text="Update Infor"
+            android:textColor="@color/black"
+
+            tools:layout_editor_absoluteY="522dp" />
+
+        <Button
+            android:id="@+id/btn_change_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/bookaland700"
+            android:text="Change Pass"
+            android:textColor="@color/black"
+            tools:layout_editor_absoluteX="247dp"
+            tools:layout_editor_absoluteY="522dp" />
+
+        <Button
+            android:id="@+id/btn_delete_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ED6565"
+            android:text="Delete Account"
+            android:textColor="@color/black"
+            app:iconTint="#DA3030"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="522dp" />
+    </LinearLayout>
+
+    <RadioButton
+        android:id="@+id/rdo_male"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="42dp"
+        android:text="Male"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/rdo_female"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+    <RadioButton
+        android:id="@+id/rdo_other"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="28dp"
+        android:text="Other"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+    <RadioButton
+        android:id="@+id/rdo_female"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="42dp"
+        android:text="Female"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/rdo_other"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_edt_img_account" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

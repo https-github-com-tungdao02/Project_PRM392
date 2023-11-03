@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="genders_array">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="roles_array">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <color name="black">#FF000000</color>
+    <color name="bookaland">#fff0d9</color>
+    <color name="bookaland700">#FABA59</color>
+    <color name="lavender">#8180f7</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Bookaland</string>
+    <string name="firebase_database_url" translatable="false">https://test1-f93a4-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">607763670823</string>
+    <string name="google_api_key" translatable="false">AIzaSyCd6SXn2fuVM9EMY8Fh4oDfgjNDM7xrYSo</string>
+    <string name="google_app_id" translatable="false">1:607763670823:android:47e7e683b4b9d13db66b02</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCd6SXn2fuVM9EMY8Fh4oDfgjNDM7xrYSo</string>
+    <string name="google_storage_bucket" translatable="false">test1-f93a4.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_Close">Close Navigation Drawer</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="project_id" translatable="false">test1-f93a4</string>
+    <style name="Base.Theme.Project_PRM392" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="android:statusBarColor">@color/bookaland700</item>
+    </style>
+    <style name="Theme.Project_PRM392" parent="Base.Theme.Project_PRM392"/>
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <item name="colorPrimary">@color/white</item>
+    </style>
+</resources>
