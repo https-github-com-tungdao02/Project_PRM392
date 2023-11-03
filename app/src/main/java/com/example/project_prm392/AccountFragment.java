@@ -3,14 +3,12 @@ package com.example.project_prm392;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -19,7 +17,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -249,12 +246,12 @@ public class AccountFragment extends Fragment {
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
                 window.setBackgroundDrawable(new ColorDrawable(Color.WHITE));
                 dialog.setCancelable(false);
-                EditText edt_current_password= dialog.findViewById(R.id.edt_current_password);
-                EditText edt_new_password= dialog.findViewById(R.id.edt_new_password);
+                EditText edt_current_password= dialog.findViewById(R.id.emailBox);
+                EditText edt_new_password= dialog.findViewById(R.id.userNameBox);
                 EditText edt_confirm_password= dialog.findViewById(R.id.edt_confirm_password);
 
-                Button btnCancel_pass=dialog.findViewById(R.id.btnCancel_pass);
-                Button btnReset_pass=dialog.findViewById(R.id.btnReset_pass);
+                Button btnCancel_pass=dialog.findViewById(R.id.btnCancel);
+                Button btnReset_pass=dialog.findViewById(R.id.btnReset);
 
                 btnCancel_pass.setOnClickListener(new View.OnClickListener() {
                     @Override

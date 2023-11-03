@@ -82,11 +82,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 View dialogView = getLayoutInflater().inflate(R.layout.forgot_password_dialog, null);
-                EditText emailBox = dialogView.findViewById(R.id.edt_current_password);
-                EditText userNameBox = dialogView.findViewById(R.id.edt_new_password);
+                EditText emailBox = dialogView.findViewById(R.id.emailBox);
+                EditText userNameBox = dialogView.findViewById(R.id.userNameBox);
                 builder.setView(dialogView);
                 AlertDialog dialog = builder.create();
-                dialogView.findViewById(R.id.btnReset_pass).setOnClickListener(new View.OnClickListener() {
+                dialogView.findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         String userEmail = emailBox.getText().toString();
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 });
-                dialogView.findViewById(R.id.btnCancel_pass).setOnClickListener(new View.OnClickListener() {
+                dialogView.findViewById(R.id.btnCancel).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
