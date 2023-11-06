@@ -48,6 +48,7 @@ public class TagAdapter extends  RecyclerView.Adapter<TagAdapter.CategoryViewHol
         holder.rcvBook.setLayoutManager(linearLayoutManager);
 
         BookAdapter bookAdapter = new BookAdapter();
+
         bookAdapter.setData(tag.getBooks());
 
         holder.rcvBook.setAdapter(bookAdapter);

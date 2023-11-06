@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_book_item"
     android:layout_width="100dp"
     android:layout_height="wrap_content"
     android:layout_marginEnd="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="8dp">
 
     <LinearLayout
@@ -16,16 +17,16 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/rr"/>
+            android:src="@drawable/rr" />
 
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="6dp"
-            android:textSize="14sp"
+            android:text="Book 1"
             android:textColor="@android:color/black"
-            android:text="Book 1"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 
