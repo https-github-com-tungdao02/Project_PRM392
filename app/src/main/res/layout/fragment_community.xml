@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/CommunityList"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="590dp"
         android:layout_marginTop="60dp">
 
         <androidx.recyclerview.widget.RecyclerView
