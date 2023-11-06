@@ -1,5 +1,6 @@
 package com.example.project_prm392;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.project_prm392.entity.Community;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import android.content.SharedPreferences;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +35,8 @@ public class CommentFragment extends DialogFragment  {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("account", Context.MODE_PRIVATE);
+                String userName = sharedPreferences.getString("username","");
                 String comment = commentEditText.getText().toString();
                 String itemId  = UUID.randomUUID().toString();
                 int like = 0;
@@ -41,11 +44,10 @@ public class CommentFragment extends DialogFragment  {
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
                 String dateTime = dateFormat.format(calendar.getTime());
                 int book_id=2;
-                int user_id =1;
-                CommunityDataModel community = new CommunityDataModel(comment,dateTime,like,book_id,user_id);
+                CommunityDataModel community = new CommunityDataModel(comment,dateTime,like,userName, book_id);
 
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = db.getReference("Communities");
+                DatabaseReference databaseReference = db.getReference("communities");
                 databaseReference.child(itemId).setValue(community);
                 dismiss();
             }
@@ -59,14 +61,14 @@ public class CommentFragment extends DialogFragment  {
 
         public int like;
 
-        public int user_id;
+        public String user;
         public int book_id;
 
-        public CommunityDataModel (String description,String date, int like,int user_id,int book_id){
+        public CommunityDataModel (String description,String date, int like,String user,int book_id){
             this.description = description;
             this.date = date;
             this.like = like;
-            this.user_id = user_id;
+            this.user = user;
             this.book_id = book_id;
         }
     }

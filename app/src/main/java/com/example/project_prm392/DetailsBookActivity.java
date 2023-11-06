@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.Book;
 import com.example.project_prm392.entity.User;
+import android.content.SharedPreferences;
+import android.view.View;
 
 public class DetailsBookActivity extends AppCompatActivity {
     ImageView imv;
@@ -43,5 +45,14 @@ public class DetailsBookActivity extends AppCompatActivity {
             }
         }
 
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("bookId", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("keyId", "2");
+                editor.apply();
+            }
+        });
     }
 }
