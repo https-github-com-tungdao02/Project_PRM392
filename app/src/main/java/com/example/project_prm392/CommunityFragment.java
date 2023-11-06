@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.example.project_prm392.entity.Community;
+import com.example.project_prm392.entity.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +51,7 @@ public class CommunityFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     final List<Community> communityList = new ArrayList<>();
-
+    FirebaseDatabase database;
     private ImageView commentBtn;
     public CommunityFragment() {
         // Required empty public constructor
@@ -81,8 +82,8 @@ public class CommunityFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Communities");
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("communities");
 
     }
 
@@ -158,7 +159,7 @@ public class CommunityFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 communityList.clear();
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    if(childSnapshot.child("book_id").getValue(Integer.class) == 1 ){
+                    if(childSnapshot.child("book_id").getValue(Integer.class) == 2 ){
 
                         String description = childSnapshot.child("description").getValue(String.class);
                         String date = childSnapshot.child("date").getValue(String.class);
@@ -170,6 +171,7 @@ public class CommunityFragment extends Fragment {
                             throw new RuntimeException(e);
                         }
                         Community community = new Community(description, dateTimed, like);
+                        community.user = childSnapshot.child("user").getValue(String.class);
                         community.firebaseId = UUID.fromString(childSnapshot.getKey());
                         communityList.add(community);
                     }

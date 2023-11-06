@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     openFragment(new HomeFragment());
                     return true;
                 } else if (iteamId == R.id.bottom_community) {
-                    openFragment(new CommunityFragment());
+                    openFragment(new ReadPageFragment());
                     return true;
                 }else if (iteamId == R.id.bottom_history) {
                     openFragment(new HistoryFragment());
