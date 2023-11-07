@@ -15,6 +15,7 @@
         <activity
             android:name=".DetailsBookActivity"
             android:exported="false" />
+        <activity android:name="com.example.project_prm392.UserCreateActivity" />
         <activity android:name=".ProfileScreen" />
         <activity android:name=".login_register.RegisterActivity" />
         <activity android:name=".login_register.LoginActivity" />
