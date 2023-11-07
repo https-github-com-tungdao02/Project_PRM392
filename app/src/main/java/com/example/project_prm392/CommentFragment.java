@@ -31,6 +31,8 @@ public class CommentFragment extends DialogFragment  {
         View view = inflater.inflate(R.layout.fragment_comment, container, false);
         commentEditText = view.findViewById(R.id.commentEditText);
         saveButton = view.findViewById(R.id.saveButton);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("bookId", Context.MODE_PRIVATE);
+        String bookKey = sharedPreferences.getString("keyId","");
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +45,7 @@ public class CommentFragment extends DialogFragment  {
                 Calendar calendar = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
                 String dateTime = dateFormat.format(calendar.getTime());
-                int book_id=2;
+                int book_id= Integer.parseInt(bookKey);
                 CommunityDataModel community = new CommunityDataModel(comment,dateTime,like,userName, book_id);
 
                 FirebaseDatabase db = FirebaseDatabase.getInstance();

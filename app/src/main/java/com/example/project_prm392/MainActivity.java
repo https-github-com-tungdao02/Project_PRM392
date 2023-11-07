@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fragmentManager = getSupportFragmentManager();
 
 
 //        fab = findViewById(R.id.fab);
@@ -94,6 +95,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(this, gso);
+        Intent intent = getIntent();
+        if (intent != null) {
+            String fragmentToOpen = intent.getStringExtra("fragmentToOpen");
+            if ("community".equals(fragmentToOpen)) {
+                openFragment(new CommunityFragment());
+            } else if ("read".equals(fragmentToOpen)) {
+                openFragment(new ReadPageFragment());
+            }
+        }
     }
 
     @Override

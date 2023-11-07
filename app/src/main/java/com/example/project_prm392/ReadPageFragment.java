@@ -1,5 +1,7 @@
 package com.example.project_prm392;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,7 +42,7 @@ public class ReadPageFragment extends Fragment {
 
     private int page =1;
     public TextView pageContentTextView;
-
+    public String bookKey;
     public ReadPageFragment() {
         // Required empty public constructor
     }
@@ -84,7 +86,8 @@ public class ReadPageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_read_page, container, false);
         pageContentTextView = view.findViewById(R.id.pageContentTextView);
         ImageView menuBtn = view.findViewById(R.id.menuButton);
-
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("bookId", Context.MODE_PRIVATE);
+        bookKey = sharedPreferences.getString("keyId","");
         menuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +99,7 @@ public class ReadPageFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                     Book book = childSnapshot.child("book").getValue(Book.class);
-                    if(book.getId() == 1 && childSnapshot.child("number").getValue(int.class) == page){
+                    if(book.getId() == Integer.parseInt(bookKey) && childSnapshot.child("number").getValue(int.class) == page){
                         String content = childSnapshot.child("content").getValue(String.class);
                         pageContentTextView.setText(content);
                         break;
@@ -113,7 +116,7 @@ public class ReadPageFragment extends Fragment {
     }
 
     private void showCommentDialog() {
-        PageFragment dialog = new PageFragment(pageContentTextView,1);
+        PageFragment dialog = new PageFragment(pageContentTextView,Integer.parseInt(bookKey));
         FragmentManager fragmentManager = getChildFragmentManager();
         dialog.show(fragmentManager, "ChapterDialog");
     }

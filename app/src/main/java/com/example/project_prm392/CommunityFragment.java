@@ -1,6 +1,9 @@
 package com.example.project_prm392;
 
 import static java.util.UUID.randomUUID;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -95,6 +98,8 @@ public class CommunityFragment extends Fragment {
         final CommunityAdapter adapter = new CommunityAdapter(communityList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("bookId", Context.MODE_PRIVATE);
+        String bookKey = sharedPreferences.getString("keyId","");
 
         commentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +164,7 @@ public class CommunityFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 communityList.clear();
                 for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
-                    if(childSnapshot.child("book_id").getValue(Integer.class) == 2 ){
+                    if(childSnapshot.child("book_id").getValue(Integer.class) == Integer.parseInt(bookKey) ){
 
                         String description = childSnapshot.child("description").getValue(String.class);
                         String date = childSnapshot.child("date").getValue(String.class);
