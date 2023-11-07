@@ -139,13 +139,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     void signOut() {
-        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.remove("username");
-        editor.remove("password");
-        editor.putBoolean("is_saved",false);
-        editor.commit();
 
+        SharedPreferences preferences = getSharedPreferences("account", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        boolean isSaved = preferences.getBoolean("is_saved", false);
+        if(isSaved == false){
+            editor.clear();
+            editor.apply();
+        }else{
+            editor.apply();
+        }
         // Sign out khỏi Google
         gsc.signOut().addOnCompleteListener(this, task -> {
             // Xử lý sau khi sign out thành công
