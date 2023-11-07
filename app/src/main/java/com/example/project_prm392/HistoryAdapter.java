@@ -63,7 +63,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
         Glide.with(holder.itemView).load(history.getBook().getImage()).into(holder.imv_img_book);
         holder.tv_book_name_history.setText(history.getBook().getName());
         holder.tv_book_date_history.setText(history.getTime()+"");
-        holder.tv_book_page_history.setText(history.getNumber_page().getNumber()+"");
+//        holder.tv_book_page_history.setText(history.getNumber_page().getNumber()+"");
         holder.btn_delete_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
