@@ -5,13 +5,13 @@
     android:padding="16dp"
     android:orientation="horizontal">
 
-<Button
-    android:id="@+id/chapter"
-    android:layout_width="100dp"
-    android:layout_height="wrap_content"
-    android:backgroundTint="#FABA59"
-    android:text="chapter 1"
-    android:textColor="@color/black"
-    android:textStyle="bold"
-    android:tag="1"/>
+    <Button
+        android:id="@+id/chapter"
+        android:layout_width="64dp"
+        android:layout_height="58dp"
+        android:backgroundTint="#FABA59"
+        android:tag="1"
+        android:text="chapter 1"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 </LinearLayout>
