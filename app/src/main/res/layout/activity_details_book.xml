@@ -91,13 +91,13 @@
         android:layout_marginTop="40dp"
         android:backgroundTint="#D58103"
         android:text="View"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
+        app:layout_constraintEnd_toStartOf="@+id/comment"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/comment"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
