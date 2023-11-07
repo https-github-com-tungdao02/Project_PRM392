@@ -3,12 +3,16 @@ package com.example.project_prm392;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -24,6 +28,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.User;
+import com.example.project_prm392.login_register.Home_Login;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +58,7 @@ public class AccountFragment extends Fragment {
     EditText _edt_email_account,_edt_phone_account,_edt_img_account,_edt_gender_account;
     Button btn_update_account,btn_change_account,btn_delete_account;
     CircleImageView _imv_account;
+    User user;
 
     RadioButton rdo_male,rdo_female,rdo_other;
 
@@ -123,7 +129,7 @@ public class AccountFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    User user = snapshot.getValue(User.class);
+                     user = snapshot.getValue(User.class);
                     Glide.with(view).load(user.getImage()).into(_imv_account);
                     _edt_img_account.setEnabled(false);
                     _edt_gender_account.setEnabled(false);
@@ -276,6 +282,32 @@ public class AccountFragment extends Fragment {
                     }
                 });
                 dialog.show();
+            }
+        });
+        btn_delete_account.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference db = FirebaseDatabase.getInstance().getReference("users");
+                new AlertDialog.Builder(v.getContext())
+                        .setTitle("Delete Confirm")
+                        .setMessage("Do you want to delete")
+                        .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                db.child(user.getUser()+"").removeValue(new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                        Toast.makeText(getContext(),"Delete successfull",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                dialog.dismiss();
+                                Intent intent= new Intent(v.getContext(), Home_Login.class);
+                                v.getContext().startActivity(intent);
+
+                            }
+                        })
+                        .setNegativeButton("Cancel",null)
+                        .show();
             }
         });
         // Inflate the layout for this fragment

@@ -1,5 +1,6 @@
 package com.example.project_prm392;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.History;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryHolder> {
@@ -60,10 +62,22 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     @Override
     public void onBindViewHolder(@NonNull HistoryHolder holder, int position) {
         History history= list.get(position);
-        Glide.with(holder.itemView).load(history.getBook().getImage()).into(holder.imv_img_book);
+        Glide.with(holder.itemView).load(history.getBook().getImage())
+                .placeholder(R.drawable.book_icon)
+                .error("https://png.pngtree.com/element_our/20200610/ourlarge/pngtree-default-avatar-image_2237213.jpg")
+                .into(holder.imv_img_book);
         holder.tv_book_name_history.setText(history.getBook().getName());
-        holder.tv_book_date_history.setText(history.getTime()+"");
-        holder.tv_book_page_history.setText(history.getNumber_page().getNumber()+"");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        holder.imv_img_book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(v.getContext(), DetailsBookActivity.class );
+                intent.putExtra("book",history.getBook());
+                v.getContext().startActivity(intent);
+            }
+        });
+        holder.tv_book_date_history.setText(sdf.format(history.getTime()));
+//        holder.tv_book_page_history.setText(history.getNumber_page().getNumber()+"");
         holder.btn_delete_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

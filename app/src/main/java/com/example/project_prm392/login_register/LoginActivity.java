@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project_prm392.MainActivity;
+import com.example.project_prm392.MainActivityAdmin;
 import com.example.project_prm392.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -166,6 +167,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     String password = snapshot.child("password").getValue(String.class);
+                    String role = snapshot.child("role").getValue().toString();
                     // Username already exists
                     if(userPassword.equals(password)){
                         SharedPreferences perferences = getSharedPreferences("account", MODE_PRIVATE);
@@ -173,8 +175,15 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putString("username",userName.getText().toString());
                         editor.putString("password",passWord.getText().toString());
                         editor.commit();
-                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(i);
+                        if(role.equals("2")){
+                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(i);
+                        }
+                        else{
+                            Intent i = new Intent(LoginActivity.this, MainActivityAdmin.class);
+                            startActivity(i);
+                        }                        
+
                     }
                     else{
                         Toast.makeText(LoginActivity.this, "UserName or PassWord not true!!!!", Toast.LENGTH_SHORT).show();
