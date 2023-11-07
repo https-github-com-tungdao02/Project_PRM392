@@ -3,7 +3,9 @@ package com.example.project_prm392;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class DetailsBookActivity extends AppCompatActivity {
         tv_Name=findViewById(R.id.textView4);
         tv_Author=findViewById(R.id.textView6);
         tv_Like=findViewById(R.id.tvLike);
+        tv_Des=findViewById(R.id.tv_Des_detail);
         btnRead=findViewById(R.id.button5);
         btnComment=findViewById(R.id.comment);
         Intent intent = getIntent();
@@ -41,7 +44,7 @@ public class DetailsBookActivity extends AppCompatActivity {
                 tv_Like.setText(book.getLike()+"");
                 tv_Name.setText(book.getName()+"");
                 tv_Author.setText(book.getAuthor()+"");
-                tv_Des.setText(book.getDescription()+"");
+               tv_Des.setText(book.getDescription()+"");
             }
         }
 
@@ -65,6 +68,7 @@ public class DetailsBookActivity extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("bookId", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("keyId", book.getId()+"");
+
                 editor.apply();
                 Intent intent = new Intent(DetailsBookActivity.this, MainActivity.class);
                 intent.putExtra("fragmentToOpen", "read");

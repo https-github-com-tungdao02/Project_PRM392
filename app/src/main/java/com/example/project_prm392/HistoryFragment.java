@@ -1,6 +1,9 @@
 package com.example.project_prm392;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -44,6 +47,8 @@ public class  HistoryFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    SharedPreferences shared_pref;
+    SharedPreferences.Editor editor;
     Button btn_history_fragment_delete;
     CheckBox cb_history_fragment_select_all;
     List<History> list;
@@ -93,6 +98,9 @@ public class  HistoryFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("history");
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        shared_pref= getActivity().getSharedPreferences("account",MODE_PRIVATE);
+        editor= shared_pref.edit();
+        String username=shared_pref.getString("username","");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -100,8 +108,9 @@ public class  HistoryFragment extends Fragment {
                 list = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     History history = dataSnapshot.getValue(History.class);
-//                    if(history.getUser().equals())
-                    list.add(history);
+                    if(history.getUser().getUser().equals(username)){
+                        list.add(history);
+                    }
                 }
                 recyclerView=view.findViewById(R.id.rcv_history);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -162,7 +171,7 @@ public class  HistoryFragment extends Fragment {
                     public void onClick(View v) {
                         selected=adapter.getSelected();
                         if(selected.isEmpty()){
-                            Toast.makeText(getActivity(),"rong",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"Don't have data to delete",Toast.LENGTH_SHORT).show();
                         }else {
                             for (History history: selected) {
                                 databaseReference.child(history.getId()+"").removeValue(new DatabaseReference.CompletionListener() {
