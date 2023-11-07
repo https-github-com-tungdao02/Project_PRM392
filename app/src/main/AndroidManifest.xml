@@ -19,6 +19,7 @@
         <activity android:name=".login_register.RegisterActivity" />
         <activity android:name=".login_register.LoginActivity" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivityAdmin" />
         <activity
             android:name=".login_register.Home_Login"
             android:exported="true">
