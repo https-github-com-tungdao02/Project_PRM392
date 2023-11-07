@@ -42,9 +42,37 @@
                 android:text="       &quot;Chúng tôi không chỉ đơn thuần là một dịch vụ đọc trực tuyến mà còn là ngôi nhà mà mọi độc giả có thể trở về để khám phá, trải nghiệm và chia sẻ niềm đam mê với những trang sách tuyệt vời nhất mà thế giới này mang lại....&quot;"
                 android:textColor="#5E5E5E"
                 android:textStyle="italic" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/imageaboutus1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="100dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="serif-monospace"
+                    android:gravity="center"
+                    android:text="Our Story"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="60dp"
+                    android:paddingTop="15dp"
+                    android:text="       Lịch sử của trang đọc sách trực tuyến của chúng tôi bắt đầu từ nỗi lo về sự giảm thiểu khả năng tiếp cận sách in và khó khăn trong việc truy cập kiến thức văn hóa. Với mong muốn lan tỏa tri thức và khuyến khích việc đọc sách trong mọi tầng lớp xã hội, chúng tôi đã quyết tâm tạo ra một nền tảng trực tuyến đọc sách tiện lợi, đa dạng và dễ tiếp cận. Thông qua việc kết hợp công nghệ và đam mê văn hóa, chúng tôi xây dựng một không gian mở và thuận tiện, nơi mọi người có thể khám phá, đắm chìm và chia sẻ niềm đam mê với văn chương một cách dễ dàng và hiệu quả. Sứ mệnh của chúng tôi là biến việc đọc sách trở thành một trải nghiệm thú vị và truy cập đến tri thức trở nên không bao giờ dễ dàng hơn."
+                    android:textStyle="italic" />
+            </LinearLayout>
         </LinearLayout>
-
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
