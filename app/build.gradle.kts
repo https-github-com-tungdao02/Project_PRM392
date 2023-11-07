@@ -52,5 +52,5 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("com.squareup.picasso:picasso:2.71828")
-
+    implementation ("me.relex:circleindicator:2.1.6")
 }

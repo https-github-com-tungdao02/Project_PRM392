@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
     private TagAdapter tagAdapter;
 
     private ViewPager viewPager;
-    private CircleIndicator circleIndicator;
+   private CircleIndicator circleIndicator;
     private PhotoAdapter photoAdapter;
 
     private List<Photo> mListPhoto;
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
         rcvCategory = view.findViewById(R.id.rcv_category);
         viewPager = view.findViewById(R.id.viewpager);
 
-        circleIndicator = view.findViewById(R.id.circle_indicator);
+      circleIndicator = view.findViewById(R.id.circle_indicator);
 
         mListPhoto = getListPhoto();
 
