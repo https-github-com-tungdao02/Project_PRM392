@@ -30,6 +30,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -113,6 +114,12 @@ public class  HistoryFragment extends Fragment {
                     }
 
                 }
+                list.sort(new Comparator<History>() {
+                    @Override
+                    public int compare(History o1, History o2) {
+                        return -o1.getTime().compareTo(o2.getTime());
+                    }
+                });
                 recyclerView=view.findViewById(R.id.rcv_history);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                 // Create and set the adapter
