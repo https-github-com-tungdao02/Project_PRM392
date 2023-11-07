@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.project_prm392.entity.History;
 import com.example.project_prm392.entity.User;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -262,6 +263,24 @@ public class MainActivityAdmin extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                                         Toast.makeText(MainActivityAdmin.this,"Delete successfull",Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+                                DatabaseReference  newdb = FirebaseDatabase.getInstance().getReference("history");
+                                newdb.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                                            History history= dataSnapshot.getValue(History.class);
+                                            if(history.getUser().getUser().equals(user.getUser())){
+                                                newdb.child(history.getId()).removeValue();
+                                            }
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
                                     }
                                 });
                                 dialog.dismiss();
