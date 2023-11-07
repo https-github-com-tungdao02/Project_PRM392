@@ -3,35 +3,26 @@ package com.example.project_prm392.entity;
 import java.util.Date;
 
 public class History {
-    private int id;
+    private String id;
     private Date time;
     private Book book;
     private User user;
-    private Page number_page;
+//    private Page number_page;
     public History() {
     }
 
-    public History(int id,  Date time, Book book, User user, Page number_page) {
+    public History(String id, Date time, Book book, User user) {
         this.id = id;
         this.time = time;
         this.book = book;
         this.user = user;
-        this.number_page = number_page;
     }
 
-    public Page getNumber_page() {
-        return number_page;
-    }
-
-    public void setNumber_page(Page number_page) {
-        this.number_page = number_page;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

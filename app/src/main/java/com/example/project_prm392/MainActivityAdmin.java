@@ -141,28 +141,28 @@ public class MainActivityAdmin extends AppCompatActivity {
     }
 
     private void openDialogDetail(User user) {
-        Dialog dialog= new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.user_details_dialog);
-        Window window= dialog.getWindow();
+        Dialog dialog1= new Dialog(this);
+        dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog1.setContentView(R.layout.user_details_dialog);
+        Window window= dialog1.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,WindowManager.LayoutParams.WRAP_CONTENT);
-        dialog.setCancelable(false);
+        dialog1.setCancelable(false);
 
-        TextView username = dialog.findViewById(R.id.tv_user_details);
+        TextView username = dialog1.findViewById(R.id.tv_user_details);
         username.setText(user.getUser());
-        EditText address = dialog.findViewById(R.id.edt_address_details);
+        EditText address = dialog1.findViewById(R.id.edt_address_details);
         if (user.getAddress() == null) {
             address.setHint("none");
         } else {
             address.setText(user.getAddress());
         }
-        EditText phone = dialog.findViewById(R.id.edt_phone_details);
+        EditText phone = dialog1.findViewById(R.id.edt_phone_details);
         if (user.getPhone() == null) {
             phone.setHint("none");
         } else {
             phone.setText(user.getPhone());
         }
-        EditText email = dialog.findViewById(R.id.edt_gmail_details);
+        EditText email = dialog1.findViewById(R.id.edt_gmail_details);
         if (user.getEmail() == null) {
             email.setHint("none");
         } else {
@@ -173,8 +173,8 @@ public class MainActivityAdmin extends AppCompatActivity {
         } else {
             email.setText(user.getEmail());
         }
-        CircleImageView image = dialog.findViewById(R.id.imageDetails);
-        EditText imageUrl = dialog.findViewById(R.id.edt_imageurl_details);
+        CircleImageView image = dialog1.findViewById(R.id.imageDetails);
+        EditText imageUrl = dialog1.findViewById(R.id.edt_imageurl_details);
         if (user.getImage() == null || user.getImage().isEmpty()) {
             imageUrl.setHint("none");
             Glide.with(this).load("https://png.pngtree.com/element_our/20200610/ourlarge/pngtree-default-avatar-image_2237213.jpg").into(image);
@@ -183,8 +183,8 @@ public class MainActivityAdmin extends AppCompatActivity {
             Glide.with(this).load(user.getImage()).into(image);
         }
 
-        Spinner spinnerRole = dialog.findViewById(R.id.sp_role_details);
-        Spinner spinnerGender = dialog.findViewById(R.id.sp_gender_details);
+        Spinner spinnerRole = dialog1.findViewById(R.id.sp_role_details);
+        Spinner spinnerGender = dialog1.findViewById(R.id.sp_gender_details);
 
         int userRoleInt = user.getRole();
         String userRole = String.valueOf(userRoleInt);
@@ -217,7 +217,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             }
         }
 
-        Button btn_update_details = dialog.findViewById(R.id.btn_update_details);
+        Button btn_update_details = dialog1.findViewById(R.id.btn_update_details);
         btn_update_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -240,14 +240,14 @@ public class MainActivityAdmin extends AppCompatActivity {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         Toast.makeText(MainActivityAdmin.this,"Update successfull",Toast.LENGTH_SHORT).show();
-                        dialog.dismiss();
+                        dialog1.dismiss();
                     }
                 });
             }
         });
 
 
-        Button btn_deleted_details = dialog.findViewById(R.id.btn_delete_details);
+        Button btn_deleted_details = dialog1.findViewById(R.id.btn_delete_details);
         btn_deleted_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,6 +265,7 @@ public class MainActivityAdmin extends AppCompatActivity {
                                     }
                                 });
                                 dialog.dismiss();
+                                dialog1.dismiss();
                             }
                         })
                         .setNegativeButton("Cancel",null)
@@ -272,14 +273,14 @@ public class MainActivityAdmin extends AppCompatActivity {
             }
         });
 
-        Button btn_cancel_details = dialog.findViewById(R.id.btn_cancel_details);
+        Button btn_cancel_details = dialog1.findViewById(R.id.btn_cancel_details);
         btn_cancel_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                dialog1.dismiss();
             }
         });
-        dialog.show();
+        dialog1.show();
 
     }
 }
