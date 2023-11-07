@@ -26,13 +26,18 @@
             android:layout_marginStart="10dp"
             android:text="Date:" />
 
-        <!-- TextView Comment -->
+        <TextView
+            android:id="@+id/By"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="By:" />
+
         <TextView
             android:id="@+id/communityDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-
             android:text="Comment:" />
     </LinearLayout>
     <LinearLayout

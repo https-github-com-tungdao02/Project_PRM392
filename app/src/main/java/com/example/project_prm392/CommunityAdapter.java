@@ -32,6 +32,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
         public TextView dateTextView;
         public TextView likeData;
         public ImageView likebtn;
+        public TextView user;
 
 
         public CommunityViewHolder(View itemView) {
@@ -40,6 +41,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
             dateTextView = itemView.findViewById(R.id.communityDate);
             likeData = itemView.findViewById(R.id.likedata);
             likebtn = itemView.findViewById(R.id.likeBtn);
+            user = itemView.findViewById(R.id.By);
         }
     }
 
@@ -53,8 +55,9 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
     @Override
     public void onBindViewHolder(@NonNull CommunityViewHolder holder, int position) {
         Community community = communityList.get(position);
-        holder.descriptionTextView.setText("Description: " + community.getDescription());
-        holder.dateTextView.setText("Date: " + community.getDate());
+        holder.user.setText("By: "+community.user);
+        holder.descriptionTextView.setText("Comment: " + community.getDescription());
+        holder.dateTextView.setText("" + community.getDate());
         holder.likeData.setText(community.getLike()+"");
         holder.likebtn.setTag(community.firebaseId);
         holder.likebtn.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +65,7 @@ public class CommunityAdapter extends RecyclerView.Adapter<CommunityAdapter.Comm
             public void onClick(View v) {
                 String itemId = v.getTag().toString();
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference databaseReference = db.getReference("Communities");
+                DatabaseReference databaseReference = db.getReference("communities");
                 DatabaseReference itemRef = databaseReference.child(itemId);
                 itemRef.child("like").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

@@ -15,7 +15,7 @@ public class Community implements Comparable<Community>{
 
     public int user_id;
     public int book_id;
-    public User user;
+    public String user;
     public Book book;
 
     public Community() {
@@ -33,7 +33,7 @@ public class Community implements Comparable<Community>{
         this.book_id = book_id;
     }
 
-    public Community(String description, Date date, int like, User user, Book book) {
+    public Community(String description, Date date, int like, String user, Book book) {
         this.description = description;
         this.date = date;
         this.like = like;
@@ -54,9 +54,6 @@ public class Community implements Comparable<Community>{
         return like;
     }
 
-    public User getUser() {
-        return user;
-    }
 
     public Book getBook() {
         return book;
@@ -74,9 +71,6 @@ public class Community implements Comparable<Community>{
         this.like = like;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
 
     public void setBook(Book book) {
         this.book = book;

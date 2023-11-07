@@ -1,6 +1,7 @@
 package com.example.project_prm392;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +13,15 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.Book;
 import com.example.project_prm392.entity.User;
+import android.content.SharedPreferences;
+import android.view.View;
 
 public class DetailsBookActivity extends AppCompatActivity {
     ImageView imv;
     TextView tv_View,tv_Name,tv_Author,tv_Like;
     Button btnRead,btnComment;
+
+    Book book;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +33,10 @@ public class DetailsBookActivity extends AppCompatActivity {
         tv_Author=findViewById(R.id.textView6);
         tv_Like=findViewById(R.id.tvLike);
         btnRead=findViewById(R.id.button5);
-        btnComment=findViewById(R.id.button4);
+        btnComment=findViewById(R.id.comment);
         Intent intent = getIntent();
         if(intent!=null){
-            Book book = (Book) intent.getSerializableExtra("book");
+            book = (Book) intent.getSerializableExtra("book");
 
             if(book!=null){
                 Glide.with(this).load(book.getImage()).into(imv);
@@ -42,6 +47,33 @@ public class DetailsBookActivity extends AppCompatActivity {
 
             }
         }
+
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("bookId", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("keyId", book.getId()+"");
+                editor.apply();
+                Intent intent = new Intent(DetailsBookActivity.this, MainActivity.class);
+                intent.putExtra("fragmentToOpen", "community");
+                startActivity(intent);
+
+            }
+        });
+
+        btnRead.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sharedPreferences = getSharedPreferences("bookId", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("keyId", book.getId()+"");
+                editor.apply();
+                Intent intent = new Intent(DetailsBookActivity.this, MainActivity.class);
+                intent.putExtra("fragmentToOpen", "read");
+                startActivity(intent);
+            }
+        });
 
     }
 }
