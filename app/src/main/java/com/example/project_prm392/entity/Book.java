@@ -1,9 +1,10 @@
 package com.example.project_prm392.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book implements Serializable {
     private int id;
     private String name;
     private String description;

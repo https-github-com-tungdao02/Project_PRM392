@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -30,10 +28,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import android.os.AsyncTask;
-import android.widget.Toast;
+
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
@@ -173,6 +170,11 @@ public class LoginActivity extends AppCompatActivity {
                     String role = snapshot.child("role").getValue().toString();
                     // Username already exists
                     if(userPassword.equals(password)){
+                        SharedPreferences perferences = getSharedPreferences("account", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = perferences.edit();
+                        editor.putString("username",userName.getText().toString());
+                        editor.putString("password",passWord.getText().toString());
+                        editor.commit();
                         if(role.equals("2")){
                             Intent i = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(i);
@@ -180,7 +182,8 @@ public class LoginActivity extends AppCompatActivity {
                         else{
                             Intent i = new Intent(LoginActivity.this, MainActivityAdmin.class);
                             startActivity(i);
-                        }
+                        }                        
+
                     }
                     else{
                         Toast.makeText(LoginActivity.this, "UserName or PassWord not true!!!!", Toast.LENGTH_SHORT).show();

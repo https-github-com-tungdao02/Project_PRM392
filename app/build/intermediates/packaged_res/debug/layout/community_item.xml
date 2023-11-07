@@ -1,0 +1,57 @@
+<!-- community_item.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/communityImage"
+        android:layout_width="38dp"
+        android:layout_height="46dp"
+        android:src="@drawable/book_icon" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- TextView Description -->
+        <TextView
+            android:id="@+id/communityDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Date:" />
+
+        <!-- TextView Comment -->
+        <TextView
+            android:id="@+id/communityDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+
+            android:text="Comment:" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/likeBtn"
+            android:layout_width="41dp"
+            android:layout_height="29dp"
+            android:src="@drawable/heart"
+            android:tag="123"/>
+
+        <TextView
+            android:id="@+id/likedata"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/likeBtn"
+            android:gravity="center"
+            android:text="12" />
+    </LinearLayout>
+</LinearLayout>

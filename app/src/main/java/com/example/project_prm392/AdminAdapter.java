@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -94,7 +93,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.AdminHolder>
 
         public AdminHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewUser = itemView.findViewById(R.id.imagee);
+            imageViewUser = itemView.findViewById(R.id._imv_account);
             tv_address = itemView.findViewById(R.id.addresstext);
             tv_name = itemView.findViewById(R.id.nametext);
             tv_phone = itemView.findViewById(R.id.phonetext);
