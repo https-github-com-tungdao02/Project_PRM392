@@ -7,15 +7,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.project_prm392.entity.Book;
-import com.example.project_prm392.entity.User;
 
 public class DetailsBookActivity extends AppCompatActivity {
     ImageView imv;
-    TextView tv_View,tv_Name,tv_Author,tv_Like;
+    TextView tv_View,tv_Name,tv_Author,tv_Like,tv_Des ;
     Button btnRead,btnComment;
 
     @Override
@@ -27,6 +25,7 @@ public class DetailsBookActivity extends AppCompatActivity {
         tv_Name=findViewById(R.id.textView4);
         tv_Author=findViewById(R.id.textView6);
         tv_Like=findViewById(R.id.tvLike);
+        tv_Des=findViewById(R.id.tv_Des_detail);
         btnRead=findViewById(R.id.button5);
         btnComment=findViewById(R.id.button4);
         Intent intent = getIntent();
@@ -39,9 +38,8 @@ public class DetailsBookActivity extends AppCompatActivity {
                 tv_Like.setText(book.getLike()+"");
                 tv_Name.setText(book.getName()+"");
                 tv_Author.setText(book.getAuthor()+"");
-
+                tv_Des.setText(book.getDescription()+"");
             }
         }
-
     }
 }

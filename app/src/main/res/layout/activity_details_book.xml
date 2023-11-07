@@ -117,8 +117,9 @@
         tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/tv_Des_detail"
+            android:layout_width="380dp"
+            android:layout_height="316dp"
             android:layout_margin="16dp"
             android:text="Description ở đây" />
     </LinearLayout>
