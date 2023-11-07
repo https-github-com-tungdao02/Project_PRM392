@@ -111,6 +111,7 @@ public class  HistoryFragment extends Fragment {
                     if(history.getUser().getUser().equals(username)){
                         list.add(history);
                     }
+
                 }
                 recyclerView=view.findViewById(R.id.rcv_history);
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -173,14 +174,24 @@ public class  HistoryFragment extends Fragment {
                         if(selected.isEmpty()){
                             Toast.makeText(getActivity(),"Don't have data to delete",Toast.LENGTH_SHORT).show();
                         }else {
-                            for (History history: selected) {
-                                databaseReference.child(history.getId()+"").removeValue(new DatabaseReference.CompletionListener() {
+                        new AlertDialog.Builder(getActivity())
+                                .setTitle("Delete Confirm")
+                                .setNegativeButton("Cancel",null)
+                                .setMessage("Do you want to delete")
+                                .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        for (History history: selected) {
+                                            databaseReference.child(history.getId()+"").removeValue(new DatabaseReference.CompletionListener() {
+                                                @Override
+                                                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                                                }
+                                            });
+                                        }
                                     }
-                                });
-                            }
+                                })
+                                .show();
+
                         }
                     }
                 });
