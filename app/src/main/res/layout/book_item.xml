@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:padding="6dp"
             android:text="Book 1"
+            android:height="65dp"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
